@@ -1,49 +1,83 @@
+
 <div class="quote">
   <blockquote id="quote-block">
     <script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
-    <small><i><a href="/quote_of_the_day" target="_blank" rel="nofollow">more Quotes</a></i></small>
+    <small><i><a href="/quote_of_the_day" target="_blank" rel="nofollow"></a></i></small>
   </blockquote>
   <cite id="quote-author"></cite>
 </div>
 
-/* Add some style to the quote block */
+/* Style the quote block */
 .quote {
-  margin: 20px 0;
-  padding: 20px;
-  background: #f2f2f2;
-  border-radius: 20px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
-  font-family: 'Helvetica Neue', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://www7.0zz0.com/2023/04/27/15/184617613.png') center/cover no-repeat;
+  color: #fff;
   text-align: center;
-  opacity: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the quote text */
+#quote-block {
+  padding: 1rem;
+  border-left: 5px solid #fff;
+  border-right: 5px solid #fff;
+}
+
+/* Style the source of the quote */
+#quote-author {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* Add some animation to the quote block and author elements */
+
+@keyframes fade-in {
+
+  0% {
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform: translateY(0);
+
+  }
+
+}
+
+.quote {
+
+  animation: fade-in 1s forwards;
+
+}
+
+.quote cite {
+
+  animation: fade-in 1s 0.2s forwards;
+
 }
 
 // Get the quote block and author elements
 const quoteBlock = document.getElementById('quote-block');
 const quoteAuthor = document.getElementById('quote-author');
+const quoteText = document.getElementById('quote-text');
 
 // Function to fade in the quote block and author elements
 function fadeIn(el) {
   el.style.opacity = 0;
   
-  let opacity = 0;
-  const interval = setInterval(() => {
-    opacity += 0.05;
-    el.style.opacity = opacity;
-    if (opacity >= 1) {
-      clearInterval(interval);
-    }
-  }, 50);
-}
-
-// Load a random quote when the page is loaded
-window.onload = function() {
-  const quote = document.querySelector('.b-qt');
-  const author = document.querySelector('.bq-aut');
-  
-  quoteBlock.innerHTML = quote.textContent;
-  quoteAuthor.innerHTML = '- ' + author.textContent;
-  
-  fadeIn(quoteBlock);
-  fadeIn(quoteAuthor);
-};
+ 
