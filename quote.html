@@ -1,0 +1,49 @@
+<div class="quote">
+  <blockquote id="quote-block">
+    <script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
+    <small><i><a href="/quote_of_the_day" target="_blank" rel="nofollow">more Quotes</a></i></small>
+  </blockquote>
+  <cite id="quote-author"></cite>
+</div>
+
+/* Add some style to the quote block */
+.quote {
+  margin: 20px 0;
+  padding: 20px;
+  background: #f2f2f2;
+  border-radius: 20px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Helvetica Neue', sans-serif;
+  text-align: center;
+  opacity: 0;
+}
+
+// Get the quote block and author elements
+const quoteBlock = document.getElementById('quote-block');
+const quoteAuthor = document.getElementById('quote-author');
+
+// Function to fade in the quote block and author elements
+function fadeIn(el) {
+  el.style.opacity = 0;
+  
+  let opacity = 0;
+  const interval = setInterval(() => {
+    opacity += 0.05;
+    el.style.opacity = opacity;
+    if (opacity >= 1) {
+      clearInterval(interval);
+    }
+  }, 50);
+}
+
+// Load a random quote when the page is loaded
+window.onload = function() {
+  const quote = document.querySelector('.b-qt');
+  const author = document.querySelector('.bq-aut');
+  
+  quoteBlock.innerHTML = quote.textContent;
+  quoteAuthor.innerHTML = '- ' + author.textContent;
+  
+  fadeIn(quoteBlock);
+  fadeIn(quoteAuthor);
+};
